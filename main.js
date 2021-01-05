@@ -6,6 +6,7 @@ for (var i = 0; i < numberOfButtons; i++) {
     //to get the information about which button have been clicked.
     var buttonClicked = this.innerHTML;
     makeSound(buttonClicked);
+    buttonAnimation(buttonClicked);
   });
 }
 
@@ -15,6 +16,7 @@ document.addEventListener("keydown", function (event) {
   var keyboardKey = event.key;
   console.log(keyboardKey);
   makeSound(keyboardKey);
+  buttonAnimation(keyboardKey);
 });
 
 function makeSound(key) {
@@ -58,6 +60,13 @@ function makeSound(key) {
       console.log(buttonName);
       break;
   }
+}
+
+function buttonAnimation(key){
+    document.querySelector("."+key).classList.add("pressed");
+    setTimeout(function(){
+        document.querySelector("."+key).classList.remove("pressed");
+    },100);
 }
 
 // Method (A)
